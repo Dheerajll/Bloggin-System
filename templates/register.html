@@ -1,10 +1,43 @@
 {% extends "base.html" %}
+{%load static%}
 {% load crispy_forms_tags %}
+{% block css %}
+<link rel="stylesheet" href="{%static 'css/register.css'%}">
+{% endblock css %}
 {% block body %}
-<h3 class="text-center">Register</h3>
-<form action="{%url 'register'%}" method="post" style="width: 500px; margin:auto;">
-    {% csrf_token %}
-    {{form | crispy}}
-    <button type= "submit" class="btn btn-primary">Submit</button>
-</form>
+
+
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <div class="register-icon">
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <h3 class="register-title">Create Account</h3>
+            <p class="register-subtitle">Join our community today</p>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-message" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'register' %}" method="post" class="register-form">
+            {% csrf_token %}
+            {{ form | crispy }}
+            
+            <button type="submit" class="btn btn-register">
+                <i class="fas fa-user-check me-2"></i>Create Account
+            </button>
+        </form>
+
+        <div class="register-footer">
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</div>
+
 {% endblock body %}

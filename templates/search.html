@@ -1,24 +1,76 @@
 {% extends "base.html" %}
+{%load static%}
+{% block css %}
+<link rel="stylesheet" href="{%static 'css/search.css'%}">
+{% endblock css %}
 
 {% block body %}  
-{% if blogs %}
-<h3 class="text-warning" style="letter-spacing :2px;">Results for '{{keyword}}'</h3> 
-<div class="row mb-2">
-{% for post in blogs  %}
-<div class="col-md-6">
-  <div class="card border-0" >
-    <div class="card-body">
-      <h3><a href="{%url 'blog' post.slug%}" class='text-dark'>{{post.title}}</a></h3>
-      <small class="mb-1 text-muted">{{post.created_at | timesince}} ago | {{post.author}}</small>
-      <p class="card-text">{{post.short_description}}</p>
+<div class="container mt-4">
+    {% if blogs %}
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-warning mb-4" style="letter-spacing: 2px;">
+                <i class="fas fa-search me-2"></i>Results for '{{keyword}}'
+            </h3> 
+        </div>
     </div>
-  </div>
-</div>
-{% endfor %}
-{% else %}
-<h3 class="text-warning" style="letter-spacing :2px;">No Results for '{{keyword}}'</h3> 
-{% endif %}
+    
+    <div class="row row-cols-1 row-cols-lg-2 g-4 mb-5">
+        {% for post in blogs %}
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" style="border-radius: 20px; overflow: hidden; transition: all 0.3s ease;">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-3">
+                        <a href="{% url 'blog' post.slug %}" class="text-decoration-none text-dark" 
+                           style="font-family: 'Playfair Display', serif; font-weight: 700;">
+                            {{post.title}}
+                        </a>
+                    </h3>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <small class="text-muted me-3">
+                            <i class="far fa-clock me-1"></i>{{post.created_at | timesince}} ago
+                        </small>
+                        <small class="text-muted">
+                            <i class="far fa-user me-1"></i>{{post.author | title}}
+                        </small>
+                    </div>
+                    
+                    <p class="card-text mb-0" style="color: #64748b; line-height: 1.6;">
+                        {{post.short_description}}
+                    </p>
+                </div>
+                <div class="card-footer border-0 bg-transparent pt-0 pb-4 px-4">
+                    <a href="{% url 'blog' post.slug %}" class="btn btn-outline-primary btn-sm" 
+                       style="border-radius: 50px; padding: 0.5rem 1.5rem; font-weight: 600;">
+                        Read More <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center py-5">
+            <div class="empty-state-card" style="background: white; border-radius: 20px; padding: 4rem 2rem; box-shadow: 0 5px 30px rgba(0,0,0,0.1);">
+                <i class="fas fa-search fa-4x text-warning mb-4" style="opacity: 0.7;"></i>
+                <h3 class="text-warning mb-3" style="letter-spacing: 2px;">
+                    No Results for '{{keyword}}'
+                </h3>
+                <p class="text-muted mb-4" style="font-size: 1.1rem;">
+                    We couldn't find any posts matching your search.
+                </p>
+                <a href="{% url 'home' %}" class="btn btn-primary" 
+                   style="border-radius: 50px; padding: 0.75rem 2rem; font-weight: 600;">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
-</div>
+
 {% endblock body %}

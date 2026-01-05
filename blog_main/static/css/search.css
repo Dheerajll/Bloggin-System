@@ -1,0 +1,48 @@
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-title a {
+    color: #1e293b;
+    transition: all 0.3s ease;
+}
+
+.card-title a:hover {
+    color: #6366f1;
+    text-decoration: none;
+}
+
+.btn-outline-primary {
+    border-color: #6366f1;
+    color: #6366f1;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+@media (max-width: 768px) {
+    .empty-state-card {
+        padding: 2rem 1rem !important;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+}
