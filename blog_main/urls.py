@@ -24,9 +24,10 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
-    path('category/',include('Blogs.urls')),
-    path('<slug:slug>',Blogviews.blog,name='blog'),
-    path('blogs/search/',Blogviews.search,name='search'),
+    path('register/',views.register,name='register'),
+    path('login/',views.login_page,name='login'),
+    path('logout/',views.logout_page,name='logout'),
+    path('blogs/',include('Blogs.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
