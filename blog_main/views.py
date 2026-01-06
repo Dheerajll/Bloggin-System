@@ -46,6 +46,9 @@ def login_page(request):
             user = authenticate(username=username,password=password)
             if user is not None:
                 login(request,user)
+                next = request.POST.get('next')
+                if next:
+                    return redirect(next) 
                 return redirect('home')
                 
     else:
