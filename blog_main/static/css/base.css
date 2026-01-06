@@ -1,6 +1,6 @@
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg,rgb(212, 217, 239) 0%,rgb(48, 109, 189) 100%);
+    background: linear-gradient(135deg, rgb(212, 217, 239) 0%, rgb(48, 109, 189) 100%);
     background-attachment: fixed;
     min-height: 100vh;
     padding: 20px;
@@ -44,7 +44,7 @@ body {
 .form-control {
     border-radius: 10px;
     padding: 0.75rem 1rem;
-    border: 2px solid transparent;
+    border: 2px solid #e2e8f0;
     transition: all 0.3s ease;
 }
 
@@ -52,6 +52,11 @@ body {
     border-color: #f59e0b;
     box-shadow: 0 0 0 0.25rem rgba(245, 158, 11, 0.25);
     transform: translateY(-1px);
+}
+
+.text-input {
+    border: solid black 1 px;
+
 }
 
 .input-group {
@@ -164,26 +169,26 @@ body {
     body {
         padding: 10px;
     }
-    
+
     .blog-header-content {
         padding: 0 1rem;
     }
-    
+
     .nav-scroller {
         margin: 1rem;
         padding: 1rem;
         overflow-x: auto;
         flex-wrap: nowrap;
     }
-    
+
     .nav-scroller .nav {
         flex-wrap: nowrap;
     }
-    
+
     .main-content-container {
         padding: 1rem;
     }
-    
+
     .btn-warning-custom,
     .btn-outline-light-custom {
         padding: 0.4rem 0.8rem;
@@ -195,9 +200,66 @@ body {
     .blog-header-logo {
         font-size: 1.4rem;
     }
-    
+
     .nav-scroller a {
         font-size: 0.75rem;
         padding: 0.4rem 0.6rem;
     }
+}
+
+/* Crispy Forms specific styling */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.5rem;
+}
+
+/* Style the form rows */
+.form-row {
+    border: 1px solid black ;
+    margin-bottom: 1rem;
+}
+/* Style file input */
+input[type="file"] {
+    padding: 0.5rem;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    width: 100%;
+    background: #f8fafc;
+}
+
+input[type="file"]:hover {
+    border-color: #f59e0b;
+    background: white;
+}
+
+/* Textarea specific */
+textarea {
+    min-height: 120px;
+    border-radius: 10px !important;
+    padding: 1rem !important;
+    border: 2px solid #e2e8f0 !important;
+}
+
+textarea:focus {
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 0 0.25rem rgba(245, 158, 11, 0.25) !important;
+}
+
+/* Required field indicator */
+.asteriskField {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+/* Error messages */
+.invalid-feedback {
+    display: block;
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
 }
